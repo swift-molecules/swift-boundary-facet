@@ -1,5 +1,3 @@
-// Boundary.Edge+Facet Tests.swift
-
 import Boundary_Facet_Primitives
 import Testing
 
