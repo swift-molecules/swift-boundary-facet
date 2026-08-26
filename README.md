@@ -1,4 +1,4 @@
-# Boundary Facet Primitives
+# Boundary Facet
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -11,7 +11,7 @@ The lossless projection between a box `Boundary.Edge` and its `Facet<2>` carrier
 `Boundary.Edge` names a face of an axis-aligned 2D box (`top`, `left`, `bottom`, `right`); `Facet<2>` names a signed axis direction (an `Axis<2>` paired with a `Direction`). The two are the same four inhabitants seen through different vocabularies. This bridge adds the `.facet` projection and the `init(facet:)` inverse so an edge can travel as a facet — and back — without either type depending on the other.
 
 ```swift
-import Boundary_Facet_Primitives
+import Boundary_Facet
 
 // Project an edge onto its oriented facet (the +Y face).
 let face = Boundary.Edge.top.facet      // Facet<2>(axis: .secondary, direction: .positive)
@@ -23,7 +23,7 @@ let edge = Boundary.Edge(facet: face)   // .top
 Boundary.Edge.left.facet.opposite == Boundary.Edge.right.facet   // true
 ```
 
-The axis convention is fixed: axis 0 = X = `.primary`, axis 1 = Y = `.secondary`, so `top` = +Y, `bottom` = −Y, `right` = +X, `left` = −X. Importing this module also re-exports `Boundary_Primitives` and `Facet_Primitives`, so `Boundary.Edge` and `Facet` are both in scope.
+The axis convention is fixed: axis 0 = X = `.primary`, axis 1 = Y = `.secondary`, so `top` = +Y, `bottom` = −Y, `right` = +X, `left` = −X. Importing this module also re-exports `Boundary` and `Facet`, so `Boundary.Edge` and `Facet` are both in scope.
 
 ---
 
@@ -31,7 +31,7 @@ The axis convention is fixed: axis 0 = X = `.primary`, axis 1 = Y = `.secondary`
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-boundary-facet-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-boundary-facet.git", branch: "main")
 ]
 ```
 
@@ -39,7 +39,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Boundary Facet Primitives", package: "swift-boundary-facet-primitives"),
+        .product(name: "Boundary Facet", package: "swift-boundary-facet"),
     ]
 )
 ```
@@ -54,8 +54,8 @@ One bridge target over the `Boundary.Edge` and `Facet<2>` carriers, plus a test-
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Boundary Facet Primitives` | `Sources/Boundary Facet Primitives/` | Adds `Boundary.Edge.facet` and `Boundary.Edge(facet:)`, the lossless projection to and from `Facet<2>`. Re-exports `Boundary_Primitives` and `Facet_Primitives`. |
-| `Boundary Facet Primitives Test Support` | `Tests/Support/` | Re-exports the bridge target for test consumers. |
+| `Boundary Facet` | `Sources/Boundary Facet/` | Adds `Boundary.Edge.facet` and `Boundary.Edge(facet:)`, the lossless projection to and from `Facet<2>`. Re-exports `Boundary` and `Facet`. |
+| `Boundary Facet Test Support` | `Tests/Support/` | Re-exports the bridge target for test consumers. |
 
 Foundation-free.
 

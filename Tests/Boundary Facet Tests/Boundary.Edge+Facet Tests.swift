@@ -1,4 +1,4 @@
-import Boundary_Facet_Primitives
+import Boundary_Facet
 import Testing
 
 @Suite

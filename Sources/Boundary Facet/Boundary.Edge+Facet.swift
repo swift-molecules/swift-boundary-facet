@@ -1,5 +1,5 @@
-public import Boundary_Primitives
-public import Facet_Primitives
+public import Boundary
+public import Facet
 
 extension Boundary.Edge {
 
