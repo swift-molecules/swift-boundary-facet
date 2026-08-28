@@ -1,4 +1,6 @@
+import Axis
 import Boundary_Facet
+import Direction
 import Testing
 
 @Suite

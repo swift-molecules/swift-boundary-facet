@@ -1,4 +1,6 @@
+public import Axis
 public import Boundary
+public import Direction
 public import Facet
 
 extension Boundary.Edge {

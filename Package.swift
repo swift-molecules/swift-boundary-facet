@@ -13,11 +13,19 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-boundary.git",
+            url: "https://github.com/swift-atoms/swift-boundary.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-facet.git",
+            url: "https://github.com/swift-atoms/swift-facet.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-atoms/swift-axis.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-atoms/swift-direction.git",
             branch: "main"
         ),
     ],
@@ -27,6 +35,8 @@ let package = Package(
             dependencies: [
                 .product(name: "Boundary", package: "swift-boundary"),
                 .product(name: "Facet", package: "swift-facet"),
+                .product(name: "Axis", package: "swift-axis"),
+                .product(name: "Direction", package: "swift-direction"),
             ]
         ),
         .target(
@@ -36,7 +46,12 @@ let package = Package(
         ),
         .testTarget(
             name: "Boundary Facet Tests",
-            dependencies: ["Boundary Facet", "Boundary Facet Test Support"]
+            dependencies: [
+                "Boundary Facet",
+                "Boundary Facet Test Support",
+                .product(name: "Axis", package: "swift-axis"),
+                .product(name: "Direction", package: "swift-direction"),
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]
